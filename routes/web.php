@@ -289,17 +289,3 @@ Route::get(
         ];
     }
 );
-
-
-
-// Route::get(
-//     'dev/tes-email',
-//     function (Request $request) {
-//         $to = ['rusman.pragma@gmail.com'];
-//         if ($request->to) {
-//             $to[] = $request->to;
-//         }
-//         \Mail::to($to)->send(new \App\Mail\TesMail());
-//         return $request->all();
-//     }
-// );

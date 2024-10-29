@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $role = Role::find(1);
         if (!$role) {
             $role = new Role;
-            $role->name = 'Administrator';
+            $role->name = 'Donna';
             $role->save();
         }
 
@@ -30,11 +30,11 @@ class UserSeeder extends Seeder
             $user = new User;
             $user->fill(
                 [
-                    'name' => 'Administrator',
-                    'username' => 'admin',
-                    'email' => 'admin@email.com',
+                    'name' => 'Donna',
+                    'username' => 'donna',
+                    'email' => 'donna@email.com',
                     'password' => $password,
-                    'nik' => 'admin',
+                    'nik' => 'donna',
                 ]
             );
             $user->save();

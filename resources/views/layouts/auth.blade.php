@@ -13,8 +13,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="base-url" content="{{ url('/') }}">
         <meta name="replace" content="1">
-        <meta name="author" content="PT Pragma Informatika" />
-        <meta name="description" content="Aplication by PT Pragma Informatika" />
+        <meta name="author" content="Tunas Mekar" />
+        <meta name="description" content="Tunas Mekar" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
         <link rel="shortcut icon" href="{{ '/' . 'base.logo.favicon' }}" />
