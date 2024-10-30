@@ -5,6 +5,7 @@
             countSaldo();
         });
 		
+        $('.modal-dialog').removeClass('modal-md').addClass('modal-xl');
 
         $('.content-page').on('change', '#tipe', function(e) {
             countSaldo();
