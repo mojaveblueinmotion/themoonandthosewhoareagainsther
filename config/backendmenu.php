@@ -39,6 +39,12 @@ return [
                 'title' => 'Kas Lapak',
                 'url' => '/tm1/kas',
             ],
+            [
+                'name' => 'tm1.loader',
+                'perms' => 'tm1.loader',
+                'title' => 'Loader',
+                'url' => '/tm1/loader',
+            ],
         ]
     ],
 

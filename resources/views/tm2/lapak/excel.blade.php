@@ -15,7 +15,7 @@
     <thead>
         <tr>
             <th style="border:1px solid black;text-align: center;font-weight:bold;font-size:20px;"
-                colspan="13">LAPAK SINGKONG {{ $data->lapak->name }}</th>
+                colspan="13">LAPAK SINGKONG {{ $data->lapak->name }} - {{ $data->month->translatedFormat('d F Y') }}</th>
         </tr>
         <tr>
             <th style="background-color:#d3d3d3;border:1px solid black;text-align: center;font-weight:bold;width:100px;">

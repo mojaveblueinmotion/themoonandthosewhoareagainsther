@@ -36,6 +36,10 @@ class PermissionSeeder extends Seeder
                 'name'          => 'tm1.kas',
                 'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
             ],
+            [
+                'name'          => 'tm1.loader',
+                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
+            ],
 
             /** TM 2 **/
             [
@@ -50,6 +54,10 @@ class PermissionSeeder extends Seeder
                 'name'          => 'tm2.kas',
                 'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
             ],
+            [
+                'name'          => 'tm2.loader',
+                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
+            ],
 
             /** TM 3 **/
             [
@@ -62,6 +70,10 @@ class PermissionSeeder extends Seeder
             ],
             [
                 'name'          => 'tm3.kas',
+                'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
+            ],
+            [
+                'name'          => 'tm3.loader',
                 'action'        => ['view', 'create', 'edit', 'delete', 'approve'],
             ],
 
@@ -101,6 +113,10 @@ class PermissionSeeder extends Seeder
                     'tm1.kas'                                     => ['view', 'create', 'edit', 'delete', 'approve'],
                     'tm2.kas'                                     => ['view', 'create', 'edit', 'delete', 'approve'],
                     'tm3.kas'                                     => ['view', 'create', 'edit', 'delete', 'approve'],
+
+                    'tm1.loader'                                  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'tm2.loader'                                  => ['view', 'create', 'edit', 'delete', 'approve'],
+                    'tm3.loader'                                  => ['view', 'create', 'edit', 'delete', 'approve'],
 
                     'master'                                                => ['view', 'create', 'edit', 'delete'],
                     'setting'                                               => ['view', 'create', 'edit', 'delete'],

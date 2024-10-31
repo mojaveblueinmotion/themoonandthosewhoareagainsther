@@ -10,7 +10,8 @@ class PembukuanLapakRequest extends FormRequest
     {
         $id = $this->record->id ?? 0;
         $rules = [
-            'month'               => 'required',
+            'month'               => 'required', 
+            // 'month'               => 'required|unique:trans_pembukuan_lapak,month,'.$id,
         ];
         return $rules;
     }

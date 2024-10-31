@@ -15,7 +15,7 @@
 			<td>
 				<div class="row">
 					<div class="col-12 col-sm-3 col-xl-3 mr-n6 pb-2">
-						<input class="form-control base-plugin--datepicker filter-control" data-post="tgl_masuk"
+						<input class="form-control base-plugin--datepicker filter-control" data-post="tgl_input"
 							data-options='@json([
 								'startDate' => '01/' . $record->month->format('m/Y'),
 								'endDate' => '01/' . $record->month->addMonth()->format('m/Y'),

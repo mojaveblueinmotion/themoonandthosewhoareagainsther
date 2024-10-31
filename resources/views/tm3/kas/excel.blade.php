@@ -32,7 +32,7 @@
     <thead>
         <tr>
             <th style="border:1px solid black;text-align: center;font-weight:bold;font-size:20px;"
-                colspan="6">MUTASI LAPORAN KEUANGAN {{ $data->lapak->name }}</th>
+                colspan="6">MUTASI LAPORAN KEUANGAN {{ $data->lapak->name }} - {{ $data->month->translatedFormat('d F Y') }}</th>
         </tr>
         <tr>
             <th style="border:1px solid black;text-align: center;font-weight:bold;" colspan="2"></th>

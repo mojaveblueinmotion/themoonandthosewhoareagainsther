@@ -10,6 +10,7 @@ use App\Models\Globals\Menu;
 use App\Models\Rkia\Summary;
 use Illuminate\Http\Request;
 use App\Models\Survey\SurveyReg;
+use App\Models\Tm1\LoaderDetail;
 use App\Models\Globals\TempFiles;
 use App\Models\Tm1\KasLapakDetail;
 use App\Models\Master\Fee\CostType;
@@ -997,10 +998,63 @@ class AjaxController extends Controller
             'saldo_sisa' => $saldoHistory[$lastInsertedKas->id],
         ]);
     }
-    
-    
 
+    public function getTotalLoader(Request $request)
+    {
+        $loader_id = $request->loader_id;
 
+        $historyData = LoaderDetail::when(
+            $loader_id = $request->loader_id,
+                function ($q) use ($loader_id) {
+                    $q->where('loader_id', $loader_id);
+                }
+            )->orderBy('id', 'asc')->get();
+        $saldoHistory = [];  // Store saldo for each transaction
+        $currentSaldo = 0;   // Initialize starting saldo
+        
+        // Step 1: Calculate the saldo in correct (ascending) order
+        foreach ($historyData as $loader) {
+            if ($loader->tipe == 1) {  // Debit: Subtract from saldo
+                $currentSaldo -= $loader->total;
+            } else {  // Credit: Add to saldo
+                $currentSaldo += $loader->total;
+            }
+            
+            // Store the calculated saldo for each detail (by ID)
+            $saldoHistory[$loader->id] = $currentSaldo;
+        }
+
+        $lastInsertedLoader = LoaderDetail::when(
+            $loader_id = $request->loader_id,
+                function ($q) use ($loader_id) {
+                    $q->where('loader_id', $loader_id);
+                }
+            )->orderBy('id', 'desc')->first();
+
+        return response()->json([
+            'debet'  => LoaderDetail::when(
+                $loader_id = $request->loader_id,
+                    function ($q) use ($loader_id) {
+                        $q->where('loader_id', $loader_id);
+                    }
+                )
+                ->where('tipe', 2)
+                ->get()
+                ->sum('total'),
+
+            'kredit' => LoaderDetail::when(
+                $loader_id = $request->loader_id,
+                    function ($q) use ($loader_id) {
+                        $q->where('loader_id', $loader_id);
+                    }
+                )
+                ->where('tipe', 1)
+                ->get()
+                ->sum('total'),
+
+            'saldo_sisa' => $saldoHistory[$lastInsertedLoader->id],
+        ]);
+    }
 
     public function selectPembayaran($search, Request $request)
     {

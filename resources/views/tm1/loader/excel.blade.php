@@ -13,7 +13,7 @@
 </style>
 <table>
     @php
-        $historyData = App\Models\Tm1\KasLapakDetail::orderBy('id', 'asc')->where('kas_lapak_id', $data->id)->get();
+        $historyData = App\Models\Tm1\LoaderDetail::orderBy('id', 'asc')->where('loader_id', $data->id)->get();
         $saldoHistory = [];  // Store saldo for each transaction
         $currentSaldo = 0;   // Initialize starting saldo
         
@@ -32,7 +32,7 @@
     <thead>
         <tr>
             <th style="border:1px solid black;text-align: center;font-weight:bold;font-size:20px;"
-                colspan="6">MUTASI LAPORAN KEUANGAN {{ $data->lapak->name }} - {{ $data->month->translatedFormat('d F Y') }}</th>
+                colspan="6">MUTASI KEUANGAN LOADER {{ $data->lapak->name }} - {{ $data->month->translatedFormat('d F Y') }}</th>
         </tr>
         <tr>
             <th style="border:1px solid black;text-align: center;font-weight:bold;" colspan="2"></th>

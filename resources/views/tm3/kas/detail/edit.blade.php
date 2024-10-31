@@ -94,8 +94,16 @@
             </div>
         </div>
         
+        
+        @php
+            $getLastId = App\Models\Tm1\KasLapakDetail::where('kas_lapak_id', $detail->kasLapak->id)->where('id', '<', $detail->id)->orderBy('id', 'desc')->first()->id ?? null;
+        @endphp
         {{-- <input type="hidden" id="sisaSaldoDb" value="{{{ (App\Models\Tm1\KasLapakDetail::where('kas_lapak_id', $detail->kasLapak->id)->count() > 1) ? App\Models\Tm1\KasLapakDetail::where('id', '<', $detail->id)->orderBy('id', 'desc')->first()->saldo_sisa : App\Models\Tm1\KasLapakDetail::find($detail->id)->saldo_sisa }}}"> --}}
-        <input type="hidden" id="sisaSaldoDb" value="{{ $saldoHistory[$detail->id] }}">
+        @if($getLastId == null)
+        <input type="hidden" id="sisaSaldoDb" value="0">
+        @else
+        <input type="hidden" id="sisaSaldoDb" value="{{ $saldoHistory[$getLastId] }}">
+        @endif
         <input type="hidden" value="{{ App\Models\Tm1\KasLapakDetail::where('kas_lapak_id', $detail->kasLapak->id)->count() }}" id="countDetail">
 
         <div class="row">

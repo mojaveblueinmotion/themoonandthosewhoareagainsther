@@ -5,7 +5,7 @@
 @section('modal-body')
     @method('PATCH')
     <div style="max-height:600px; overflow-y:auto; width:100%" class="modal-body">
-        <input type="hidden" id="kas_lapak_id" name="kas_lapak_id" value="{{ $detail->kas_lapak_id ?? 0 }}">
+        <input type="hidden" id="loader_id" name="loader_id" value="{{ $detail->loader_id ?? 0 }}">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group row">
@@ -14,7 +14,7 @@
                         <input value="{{ $detail->tgl_input->format('d/m/Y') }}" type="text" name="tgl_input" class="form-control base-plugin--datepicker tgl_input"
                             placeholder="{{ __('Tanggal') }}" value="" data-orientation="bottom" 
                             data-options='@json([
-                                'startDate' => '01/' . $detail->kasLapak->month->format('m/Y'),
+                                'startDate' => '01/' . $detail->loader->month->format('m/Y'),
                                 'endDate' => '',
                             ])' autocomplete="off">
                     </div>
@@ -58,26 +58,6 @@
                     </div>
                 </div>
             </div>
-            {{-- @php
-                $sisa_saldo = 0;
-                if($detail->tipe == 1){
-                    if(App\Models\Tm1\KasLapakDetail::orderBy('id', 'asc')->first()->id != $detail->id){
-                        $findLastSaldo = App\Models\Tm1\KasLapakDetail::where('id', '<', $detail->id)->orderBy('id', 'desc')->first()->saldo_sisa;
-                        
-                        $sisa_saldo = $findLastSaldo - $detail->total; 
-                    }else{
-                        $sisa_saldo = $detail->saldo_sisa; 
-                    }
-                    
-                }else{
-                    if(App\Models\Tm1\KasLapakDetail::orderBy('id', 'asc')->first()->id != $detail->id){
-                        $findLastSaldo = App\Models\Tm1\KasLapakDetail::where('id', '<', $detail->id)->orderBy('id', 'desc')->first()->saldo_sisa;
-                        $sisa_saldo = $findLastSaldo + $detail->total; 
-                    }else{
-                        $sisa_saldo = $detail->saldo_sisa; 
-                    }
-                }
-            @endphp --}}
             <div class="col-md-6">
                 <div class="form-group row">
                     <label class="col-md-4 col-form-label">{{ __('Saldo Akhir') }}</label>
@@ -93,17 +73,21 @@
                 </div>
             </div>
         </div>
-  
         @php
-            $getLastId = App\Models\Tm1\KasLapakDetail::where('kas_lapak_id', $detail->kasLapak->id)->where('id', '<', $detail->id)->orderBy('id', 'desc')->first()->id ?? null;
+            $getLastId = App\Models\Tm1\LoaderDetail::where('loader_id', $detail->loader->id)->where('id', '<', $detail->id)->orderBy('id', 'desc')->first()->id ?? null;
         @endphp
-        {{-- <input type="hidden" id="sisaSaldoDb" value="{{{ (App\Models\Tm1\KasLapakDetail::where('kas_lapak_id', $detail->kasLapak->id)->count() > 1) ? App\Models\Tm1\KasLapakDetail::where('id', '<', $detail->id)->orderBy('id', 'desc')->first()->saldo_sisa : App\Models\Tm1\KasLapakDetail::find($detail->id)->saldo_sisa }}}"> --}}
+
         @if($getLastId == null)
         <input type="hidden" id="sisaSaldoDb" value="0">
         @else
         <input type="hidden" id="sisaSaldoDb" value="{{ $saldoHistory[$getLastId] }}">
         @endif
-        <input type="hidden" value="{{ App\Models\Tm1\KasLapakDetail::where('kas_lapak_id', $detail->kasLapak->id)->count() }}" id="countDetail">
+        <input type="hidden" value="{{ App\Models\Tm1\LoaderDetail::where('loader_id', $detail->loader->id)->count() }}" id="countDetail">
+
+
+        
+        <input type="hidden" id="sisaSaldoDb" value="{{ $saldoHistory[$detail->id] }}">
+        <input type="hidden" value="{{ App\Models\Tm1\LoaderDetail::where('loader_id', $detail->loader->id)->count() }}" id="countDetail">
 
         <div class="row">
             <div class="col-md-12">

@@ -4,14 +4,13 @@ namespace App\Http\Requests\Tm1;
 
 use App\Http\Requests\FormRequest;
 
-class PembukuanSamRequest extends FormRequest
+class LoaderRequest extends FormRequest
 {
     public function rules()
     {
         $id = $this->record->id ?? 0;
         $rules = [
             'month'               => 'required', 
-            // 'month'               => 'required|unique:trans_pembukuan_sam,month,'.$id,
         ];
         return $rules;
     }

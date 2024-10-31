@@ -81,6 +81,33 @@ Route::namespace('Tm1')->prefix('tm1')->name('tm1.')->group(function () {
             'with' => ['submit', 'approval', 'print', 'history', 'tracking']
         ]
     );
+
+
+    // LOADER
+    Route::get('loader/{record}/detail', 'LoaderController@detail')->name('loader.detail');
+    Route::post('loader/{record}/detailGrid', 'LoaderController@detailGrid')->name('loader.detailGrid');
+
+    // Grid
+    Route::post('loader/{record}/detailGrid', 'LoaderController@detailGrid')->name('loader.detailGrid');
+    Route::post('loader/{record}/detailGridShow', 'LoaderController@detailGridShow')->name('loader.detailGridShow');
+
+    // Detail
+    Route::get('loader/{record}/detailCreate', 'LoaderController@detailCreate')->name('loader.detailCreate');
+    Route::post('loader/{id}/detailStore', 'LoaderController@detailStore')->name('loader.detailStore');
+    Route::get('loader/{detail}/detailEdit', 'LoaderController@detailEdit')->name('loader.detailEdit');
+    Route::get('loader/{detail}/detailShow', 'LoaderController@detailShow')->name('loader.detailShow');
+    Route::patch('loader/{detail}/detailUpdate', 'LoaderController@detailUpdate')->name('loader.detailUpdate');
+    Route::delete('loader/{detail}/detailDestroy', 'LoaderController@detailDestroy')->name('loader.detailDestroy');
+
+    Route::post('loader/{record}/revisi', 'LoaderController@revisi')->name('loader.revisi');
+
+    Route::grid(
+        'loader',
+        'LoaderController',
+        [
+            'with' => ['submit', 'approval', 'print', 'history', 'tracking']
+        ]
+    );
 });
 
 // TM 2
@@ -165,6 +192,33 @@ Route::namespace('Tm2')->prefix('tm2')->name('tm2.')->group(function () {
             'with' => ['submit', 'approval', 'print', 'history', 'tracking']
         ]
     );
+    
+
+    // LOADER
+    Route::get('loader/{record}/detail', 'LoaderController@detail')->name('loader.detail');
+    Route::post('loader/{record}/detailGrid', 'LoaderController@detailGrid')->name('loader.detailGrid');
+
+    // Grid
+    Route::post('loader/{record}/detailGrid', 'LoaderController@detailGrid')->name('loader.detailGrid');
+    Route::post('loader/{record}/detailGridShow', 'LoaderController@detailGridShow')->name('loader.detailGridShow');
+
+    // Detail
+    Route::get('loader/{record}/detailCreate', 'LoaderController@detailCreate')->name('loader.detailCreate');
+    Route::post('loader/{id}/detailStore', 'LoaderController@detailStore')->name('loader.detailStore');
+    Route::get('loader/{detail}/detailEdit', 'LoaderController@detailEdit')->name('loader.detailEdit');
+    Route::get('loader/{detail}/detailShow', 'LoaderController@detailShow')->name('loader.detailShow');
+    Route::patch('loader/{detail}/detailUpdate', 'LoaderController@detailUpdate')->name('loader.detailUpdate');
+    Route::delete('loader/{detail}/detailDestroy', 'LoaderController@detailDestroy')->name('loader.detailDestroy');
+
+    Route::post('loader/{record}/revisi', 'LoaderController@revisi')->name('loader.revisi');
+
+    Route::grid(
+        'loader',
+        'LoaderController',
+        [
+            'with' => ['submit', 'approval', 'print', 'history', 'tracking']
+        ]
+    );
 });
 
 
@@ -245,6 +299,33 @@ Route::namespace('Tm3')->prefix('tm3')->name('tm3.')->group(function () {
     Route::grid(
         'kas',
         'KasLapakController',
+        [
+            'with' => ['submit', 'approval', 'print', 'history', 'tracking']
+        ]
+    );
+
+    
+    // LOADER
+    Route::get('loader/{record}/detail', 'LoaderController@detail')->name('loader.detail');
+    Route::post('loader/{record}/detailGrid', 'LoaderController@detailGrid')->name('loader.detailGrid');
+
+    // Grid
+    Route::post('loader/{record}/detailGrid', 'LoaderController@detailGrid')->name('loader.detailGrid');
+    Route::post('loader/{record}/detailGridShow', 'LoaderController@detailGridShow')->name('loader.detailGridShow');
+
+    // Detail
+    Route::get('loader/{record}/detailCreate', 'LoaderController@detailCreate')->name('loader.detailCreate');
+    Route::post('loader/{id}/detailStore', 'LoaderController@detailStore')->name('loader.detailStore');
+    Route::get('loader/{detail}/detailEdit', 'LoaderController@detailEdit')->name('loader.detailEdit');
+    Route::get('loader/{detail}/detailShow', 'LoaderController@detailShow')->name('loader.detailShow');
+    Route::patch('loader/{detail}/detailUpdate', 'LoaderController@detailUpdate')->name('loader.detailUpdate');
+    Route::delete('loader/{detail}/detailDestroy', 'LoaderController@detailDestroy')->name('loader.detailDestroy');
+
+    Route::post('loader/{record}/revisi', 'LoaderController@revisi')->name('loader.revisi');
+
+    Route::grid(
+        'loader',
+        'LoaderController',
         [
             'with' => ['submit', 'approval', 'print', 'history', 'tracking']
         ]

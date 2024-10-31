@@ -1,17 +1,18 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Controller;
 use App\Models\Auth\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Master\Org\OrgStruct;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Facade\FlareClient\Stacktrace\File;
+use Illuminate\Support\Facades\Artisan;
 use App\Models\Followup\FollowupMonitor;
 use App\Models\Followup\FollowupRegItem;
-use App\Models\Master\Org\OrgStruct;
-use Facade\FlareClient\Stacktrace\File;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File as FacadesFile;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\File as FacadesFile;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,12 @@ Auth::routes();
 Route::get('logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth')->group(function () {
+    
+    Route::get('/refresh-database', function () {
+        Artisan::call('migrate:fresh --seed');
+        return 'Database refreshed and seeded successfully!';
+    });
+    
     Route::get(
         'auth/check',
         function () {
@@ -157,6 +164,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('getTotalPembukuan', 'AjaxController@getTotalPembukuan')->name('getTotalPembukuan');
                 Route::get('getTotalPembukuanSam', 'AjaxController@getTotalPembukuanSam')->name('getTotalPembukuanSam');
                 Route::get('getTotalKas', 'AjaxController@getTotalKas')->name('getTotalKas');
+                Route::get('getTotalLoader', 'AjaxController@getTotalLoader')->name('getTotalLoader');
             }
         );
 
